@@ -1,10 +1,10 @@
 README.md
 setup.py
-RegressorProject.egg-info/PKG-INFO
-RegressorProject.egg-info/SOURCES.txt
-RegressorProject.egg-info/dependency_links.txt
-RegressorProject.egg-info/requires.txt
-RegressorProject.egg-info/top_level.txt
+RecommendationProject.egg-info/PKG-INFO
+RecommendationProject.egg-info/SOURCES.txt
+RecommendationProject.egg-info/dependency_links.txt
+RecommendationProject.egg-info/requires.txt
+RecommendationProject.egg-info/top_level.txt
 src/__init__.py
 src/exception.py
 src/logger.py

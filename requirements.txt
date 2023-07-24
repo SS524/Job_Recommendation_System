@@ -6,4 +6,5 @@ scikit-learn
 seaborn
 spacy
 nltk
+gunicorn
 -e .
