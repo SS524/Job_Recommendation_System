@@ -12,7 +12,15 @@ import string
 import spacy
 from nltk.stem.porter import PorterStemmer
 exclude=string.punctuation
-tokenizer=spacy.load('en_core_web_sm')
+
+try:
+    tokenizer = spacy.load("en_core_web_sm")
+except: # If not present, we download
+    spacy.cli.download("en_core_web_sm")
+    tokenizer = spacy.load("en_core_web_sm")
+
+
+#tokenizer=spacy.load('en_core_web_sm')
 
 def save_object(file_path, obj):
     try:
