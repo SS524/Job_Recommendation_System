@@ -1,10 +1,13 @@
 from flask import Flask,request,render_template,jsonify
 from src.pipeline.recommendation_pipeline import RecommendPipeline
+import sys
+import logging
 
 
 app=Flask(__name__)
 
-
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 @app.route('/home')
 def home_page():
