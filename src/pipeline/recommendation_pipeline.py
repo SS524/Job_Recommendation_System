@@ -14,13 +14,13 @@ class RecommendPipeline:
 
     def recommend(self,job_title,skills,experience):
         try:
-            refdf_path=os.path.join('artifacts','reference_df.pkl')
-            processeddf_path=os.path.join('artifacts','processed_df.pkl')
+            refdf_path=os.path.join('artifacts','reference_df.csv')
+            processeddf_path=os.path.join('artifacts','processed_df.csv')
 
             #ref_df=load_object(refdf_path)
-            ref_df = pd.read_pickle(refdf_path)
+            ref_df = pd.read_csv(refdf_path)
             #processed_df=load_object(processeddf_path)
-            processed_df = pd.read_pickle(processeddf_path)
+            processed_df = pd.read_csv(processeddf_path)
 
             job_title="".join(job_title.split())
             df=pd.DataFrame({'Location':['Not Specified'],'Tags':[job_title+" "+skills+" "+experience]})
@@ -28,7 +28,7 @@ class RecommendPipeline:
             output_df=pd.concat([df,processed_df],axis=0)
 
             cv=CountVectorizer()
-            vectors=cv.fit_transform(output_df['Tags']).toarray()
+            vectors=cv.fit_transform(output_df['Tags'].values.astype('U')).toarray()
             similarity=cosine_similarity(vectors)
             top_5_recommended=sorted(list(enumerate(similarity[0])),reverse=True,key=lambda x:x[1])[1:6]
             list_of_index_values=[]
