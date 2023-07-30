@@ -9,7 +9,7 @@ from src.exception import CustomException
 from src.logger import logging
 
 import string
-import spacy
+#import spacy
 from nltk.stem.porter import PorterStemmer
 exclude=string.punctuation
 
