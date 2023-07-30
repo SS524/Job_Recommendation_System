@@ -7,4 +7,5 @@ seaborn
 spacy
 nltk
 gunicorn
+gensim
 -e .

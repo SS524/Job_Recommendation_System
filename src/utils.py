@@ -4,7 +4,7 @@ import pickle
 import numpy as np 
 import pandas as pd
 
-
+from gensim.utils import simple_preprocess
 from src.exception import CustomException
 from src.logger import logging
 
@@ -13,11 +13,11 @@ import spacy
 from nltk.stem.porter import PorterStemmer
 exclude=string.punctuation
 
-try:
-    tokenizer = spacy.load("en_core_web_sm")
-except: # If not present, we download
-    spacy.cli.download("en_core_web_sm")
-    tokenizer = spacy.load("en_core_web_sm")
+# try:
+#     tokenizer = spacy.load("en_core_web_sm")
+# except: # If not present, we download
+#     spacy.cli.download("en_core_web_sm")
+#     tokenizer = spacy.load("en_core_web_sm")
 
 
 #tokenizer=spacy.load('en_core_web_sm')
@@ -56,11 +56,12 @@ def text_preprocessing(text):
         text=text.translate(str.maketrans('','',exclude))
 
         # Tokenization
-        text_new=[]
-        for i in text.split(): 
-            text_new.append(i.strip())  
-        token_list=list(tokenizer(" ".join(text_new)))  
+        # text_new=[]
+        # for i in text.split(): 
+        #     text_new.append(i.strip())  
+        # token_list=list(tokenizer(" ".join(text_new)))  
 
+        token_list = simple_preprocess(text)
         # Stemming
         for i in range(0,len(token_list)):
             token_list[i]=PorterStemmer().stem(str(token_list[i]))

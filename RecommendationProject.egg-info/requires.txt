@@ -1,4 +1,4 @@
-pandas==2.0.3
+pandas
 numpy
 Flask
 ipykernel
@@ -7,3 +7,4 @@ seaborn
 spacy
 nltk
 gunicorn
+gensim
