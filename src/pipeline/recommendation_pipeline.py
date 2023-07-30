@@ -14,13 +14,13 @@ class RecommendPipeline:
 
     def recommend(self,job_title,skills,experience):
         try:
-            refdf_path=os.path.join('artifacts','reference_df.csv')
-            processeddf_path=os.path.join('artifacts','processed_df.csv')
+            refdf_path=os.path.join('artifacts','reference_df.pkl')
+            processeddf_path=os.path.join('artifacts','processed_df.pkl')
 
-            #ref_df=load_object(refdf_path)
-            ref_df = pd.read_csv(refdf_path)
-            #processed_df=load_object(processeddf_path)
-            processed_df = pd.read_csv(processeddf_path)
+            ref_df=load_object(refdf_path)
+            #ref_df = pd.read_csv(refdf_path)
+            processed_df=load_object(processeddf_path)
+            #processed_df = pd.read_csv(processeddf_path)
 
             job_title="".join(job_title.split())
             df=pd.DataFrame({'Location':['Not Specified'],'Tags':[job_title+" "+skills+" "+experience]})

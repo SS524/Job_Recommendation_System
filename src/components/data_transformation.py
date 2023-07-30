@@ -14,8 +14,8 @@ from src.utils import save_object,text_preprocessing
 
 @dataclass
 class DataTransformationConfig:
-    reference_df_obj_file_path=os.path.join('../../artifacts','reference_df.csv')
-    processed_df_obj_file_path=os.path.join('../../artifacts','processed_df.csv')
+    reference_df_obj_file_path=os.path.join('../../artifacts','reference_df.pkl')
+    processed_df_obj_file_path=os.path.join('../../artifacts','processed_df.pkl')
 
 
 
@@ -114,18 +114,18 @@ class DataTransformation:
             final_processed_df=df.copy()
             logging.info("Storing final df reference")
 
-            # save_object(
-            #     file_path=self.data_transformation_config.reference_df_obj_file_path,
-            #     obj=ref_df
-            # )
+            save_object(
+                file_path=self.data_transformation_config.reference_df_obj_file_path,
+                obj=ref_df
+            )
 
-            ref_df.to_csv(self.data_transformation_config.reference_df_obj_file_path, index=False)
-            # save_object(
-            #     file_path=self.data_transformation_config.processed_df_obj_file_path,
-            #     obj=final_processed_df
-            # )
+            # ref_df.to_csv(self.data_transformation_config.reference_df_obj_file_path, index=False)
+            save_object(
+                file_path=self.data_transformation_config.processed_df_obj_file_path,
+                obj=final_processed_df
+            )
 
-            final_processed_df.to_csv(self.data_transformation_config.processed_df_obj_file_path, index=False)
+            #final_processed_df.to_csv(self.data_transformation_config.processed_df_obj_file_path, index=False)
             logging.info('reference and processed dataframes saved in pickle file')
 
             return (
