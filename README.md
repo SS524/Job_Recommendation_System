@@ -10,3 +10,7 @@ conda activate "C:\Users\USER\Documents\JupyterNB\ineuron\Python Advanced\Job_Re
 ```
 pip install -r requirements.txt
 ```
+### Production URL
+```
+https://job-recommendation-system.onrender.com/home
+```
